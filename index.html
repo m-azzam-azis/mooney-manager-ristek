@@ -9,10 +9,10 @@
   <title>Mooney manager</title>
 </head>
 
-<body class="min-w-screen min-h-screen flex flex-col bg-neutral-50">
+<body class="min-w-screen min-h-screen flex flex-col bg-neutral-50 ">
 
   <header
-    class="bg-white flex justify-between p-4 items-center border-b-2 sm:px-10 md:px-6 md:mx-10 md:mt-4 md:rounded-2xl ring-shadow">
+    class="bg-white flex justify-between p-4 items-center border-b-2 sm:px-10 md:px-6 md:mx-10 md:mt-4 md:rounded-2xl ring-shadow 2xl:mx-72">
     <a href="/">
       <div
         class=" hover:backdrop-brightness-200 text-base text-black bg-main backdrop-blur-3xl font-extrabold   hover:bg-black hover:text-main duration-200 rounded-md p-2">
@@ -24,7 +24,7 @@
     </a>
   </header>
 
-  <main class="flex flex-col gap-6 flex-1 bg-neutral-50 p-4 sm:px-10 md:px-16">
+  <main class="flex flex-col gap-6 flex-1 bg-neutral-50 p-4 sm:px-10 md:px-16 w-fit mx-auto">
     <section class="flex flex-col gap-1 group">
       <h1 class="text-3xl font-bold flex gap-1 w-fit md:text-4xl">
         Hi, you &nbsp;<span class=" wave group-hover:infinite bg-yellow-100 rounded-full">👋<span />
@@ -38,40 +38,38 @@
         <img class="absolute top-0 left-0 z-auto rounded-tl-xl" src="icons/Ellipse 1.svg" alt="ellipse decoration">
         <h2 class="text-xl font-bold z-10 md:text-2xl">Add a new transaction record right now!</h2>
         <button
-          class="bg-neutral-900 h-14 rounded-xl w-full text-main text-sm font-bold z-10 hover:bg-transparent hover:backdrop-blur-3xl border-2 border-black hover:text-black duration-200 md:w-2/3 md:text-base" id="new-record">
-          Create new record &nbsp;&rarr; 
+          class="bg-neutral-900 h-14 rounded-xl w-full text-main text-sm font-bold z-10 hover:bg-transparent hover:backdrop-blur-3xl border-2 border-black hover:text-black duration-200 md:w-2/3 md:text-base"
+          id="new-record">
+          Create new record &nbsp;&rarr;
         </button>
       </div>
 
       <div class="w-full bg-white rounded-xl p-3 flex gap-6 flex-col ring-shadow md:flex-1 sm:p-5 sm:flex-2 ">
         <div>
-          <p class="font-description" id="budget">Budget</p>
-          <h4 class="text-neutral-900 font-transaction">Rp15.000.000</h4>
+          <p class="font-description">Budget</p>
+          <h4 class="text-neutral-900 font-transaction" id="budget"></h4>
         </div>
-        <button class="text-yellow-600 text-start text-base hover:translate-x-2 duration-200 w-fit" id="edit-budget">Edit Budget
+        <button class="text-yellow-600 text-start text-base hover:translate-x-2 duration-200 w-fit"
+          id="edit-budget">Edit Budget
           &nbsp;&rarr;</button>
       </div>
 
       <div class="flex-1 bg-white flex p-3 flex-col rounded-xl gap-1 ring-shadow sm:p-5">
-        <div class="font-description" id="income">Income</div>
-        <h4 class="text-mainGreen font-transaction">
-          Rp12.000.000
-        </h4>
+        <div class="font-description">Income</div>
+        <h4 class="text-mainGreen font-transaction" id="income"></h4>
       </div>
 
       <div class="flex-1 bg-white flex p-3 flex-col rounded-xl gap-1 ring-shadow sm:p-5 ">
-        <div class="font-description " id="expense">Expense </div>
-        <h4 class="text-mainRed font-transaction">Rp9.000.000</h4>
+        <div class="font-description ">Expense </div>
+        <h4 class="text-mainRed font-transaction" id="expense"></h4>
       </div>
     </section>
 
-    <section>
 
-    </section>
 
   </main>
 
-  <footer class="flex justify-center gap-2 py-2.5 text-sm bg-neutral-900 text-white">
+  <footer class="flex justify-center gap-2 py-2.5 text-sm bg-neutral-900 text-white w-full">
     Copyright ©
     <script>document.write(new Date().getFullYear())</script> Azzam
     <a href="https://github.com/m-azzam-azis/" target="_blank">
@@ -80,6 +78,51 @@
     </a>
   </footer>
 
+  <section class="z-20 fixed h-full w-full bg-neutral-50 py-auto hidden p-4 sm:px-10 md:px-16" id="form-budget">
+    <form class="bg-white rounded-3xl h-fit max-w-2xl mx-auto">
+      <label for="new-budget" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
+        Edit Budget <button id="close-budget" class="font-extralight">&#x2715;</button>
+      </label>
+      <div class="flex flex-col gap-4 p-4">
+        <div class="md:py-1">
+          <p class="text-neutral-500 font-normal text-sm md:text-lg">Budget</p>
+          <h4 class="text-neutral-900 font-transaction" id="budget-in-form"></h4>
+        </div>
+        <div class="md:py-1">
+          <p class="text-neutral-500 font-normal text-sm md:text-lg">New Budget</p>
+          <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1" type="text" name="currency-field" id="new-budget" required
+            autocomplete="off" data-type="currency" placeholder="$1,000">
+        </div>
+        <button id="submit-budget" type="submit"
+          class="bg-main w-full md:text-lg font-bold text-base py-3 flex justify-center items-center rounded-xl hover:ring-shadow">Submit</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="z-20 fixed h-full w-full bg-neutral-50 py-auto hidden p-4 sm:px-10 md:px-16" id="form-record">
+    <form class="bg-white rounded-3xl h-fit max-w-2xl mx-auto">
+      <label for="new-record" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
+        New Record <button id="close-record" class="font-extralight">&#x2715;</button>
+      </label>
+      <div class="flex flex-col gap-4 p-4">
+        <div class="md:py-1">
+          <p class="text-neutral-500 font-normal text-sm md:text-lg">record</p>
+          <h4 class="text-neutral-900 font-transaction" id="record-in-form"></h4>
+        </div>
+        <div class="md:py-1">
+          <p class="text-neutral-500 font-normal text-sm md:text-lg">New record</p>
+          <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1" type="text" name="currency-field" id="new-record"
+            data-type="currency" placeholder="$1,000">
+        </div>
+        <button id="submit-record" type="submit"
+          class="bg-main w-full md:text-lg font-bold text-base py-3 flex justify-center items-center rounded-xl hover:ring-shadow">Submit</button>
+      </div>
+    </form>
+  </section>
+
+
+
+  <script src="app.js"></script>
 
 </body>
 

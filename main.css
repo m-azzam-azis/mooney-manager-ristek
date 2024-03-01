@@ -41,4 +41,6 @@
   .font-transaction {
     @apply font-bold mt-1 text-lg md:text-xl;
   }
+
+  
 }

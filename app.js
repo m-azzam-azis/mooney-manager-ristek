@@ -36,7 +36,6 @@ function toggleForm(item) {
 editBudget.addEventListener('click', () => {
   toggleForm(formBudget);
   budgetInFrom.textContent = (totalBudget === 0) ? "-" : `$${totalBudget.toLocaleString()}`;
-
 });
 
 newRecord.addEventListener('click', () => {
@@ -57,30 +56,34 @@ closeBudget.addEventListener('click', (e) => {
 newBudget.addEventListener('input', function() {
   // Remove non-numeric characters
   let input = this.value.replace(/\D/g, '');
+  if (+input < 1) {
+    this.value = '';
+  } else {
+    // Format currency
+    input = input.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-  // Format currency
-  input = input.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    input = '$' + input;
 
-  input = '$' + input;
-
-  // Update input value
-  this.value = input;
+    // Update input value
+    this.value = input;
+  }
 });
 
-const submitBudget = document.querySelector("#submit-budget");
+const submitBudget = document.querySelector("#submit-budget")
 submitBudget.addEventListener('click', (e) => {
   e.preventDefault();
+  totalBudget = parseInt(newBudget.value.replace(/\D/g, ''));
+  if (isNaN(totalBudget) || totalBudget < 1) {
+    return;
+  } 
+  displayNumbers();
+  toggleForm(formBudget);
+  localStorage.setItem('totalBudget', totalBudget)
+});
 
-  // Check if the input value is not an empty string
-  if (newBudget.value.trim() !== '') {
-    const newTotalBudget = parseInt(newBudget.value.replace(/\D/g, ''));
-
-    // Check if the input value is a valid number
-    if (!isNaN(newTotalBudget)) {
-      totalBudget = newTotalBudget;
-      displayNumbers();
-      localStorage.setItem('totalBudget', totalBudget);
-      toggleForm(formBudget);
-    }
+formBudget.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    submitBudget.click();
   }
 });

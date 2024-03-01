@@ -29,4 +29,16 @@
   .infinite {
     animation-iteration-count: infinite;  /*Never stop waving :)*/
   }
+
+  .ring-shadow {
+    @apply ring-1 ring-neutral-500/[0.1] shadow-sm;
+  }
+
+  .font-description {
+    @apply text-neutral-500 font-normal text-base;
+  }
+
+  .font-transaction {
+    @apply font-bold mt-1 text-lg md:text-xl;
+  }
 }

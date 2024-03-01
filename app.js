@@ -36,6 +36,7 @@ function toggleForm(item) {
 editBudget.addEventListener('click', () => {
   toggleForm(formBudget);
   budgetInFrom.textContent = (totalBudget === 0) ? "-" : `$${totalBudget.toLocaleString()}`;
+  newBudget.focus();
 });
 
 newRecord.addEventListener('click', () => {

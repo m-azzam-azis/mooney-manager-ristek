@@ -31,7 +31,7 @@
   }
 
   .ring-shadow {
-    @apply ring-1 ring-neutral-500/[0.1] shadow-sm;
+    @apply ring-1 ring-neutral-500/[0.1] shadow-sm hover:shadow-md duration-300;
   }
 
   .font-description {

@@ -1,7 +1,7 @@
-
 const incomeId = document.querySelector("#income");
 const expenseId = document.querySelector("#expense");
 const budgetId = document.querySelector("#budget");
+
 const editBudget = document.querySelector("#edit-budget");
 const newRecord = document.querySelector("#new-record");
 
@@ -18,25 +18,36 @@ let totalIncome = parseInt(localStorage.getItem("totalIncome")) || 0;
 let totalExpense = parseInt(localStorage.getItem("totalExpense")) || 0;
 let totalBudget = parseInt(localStorage.getItem("totalBudget")) || 0;
 
-function displayNumbers() {
-  const formatter = (item) => {
-    return "$" + item.toLocaleString('en-us');
-  }
+const delay = (delayInms) => {
+  return new Promise(resolve => setTimeout(resolve, delayInms));
+};
 
-  incomeId.textContent = (totalIncome === 0) ? "-" : formatter(totalIncome);
-  expenseId.textContent = (totalExpense === 0) ? "-" : formatter(totalExpense);
-  budgetId.textContent = (totalBudget === 0) ? "-" : formatter(totalBudget);
+const formatter = (item) => {
+  return "$" + item.toLocaleString('en-us');
+}
+
+function displayNumbers() {
+  incomeId.textContent = (totalIncome === 0) ? "$0" : formatter(totalIncome);
+  expenseId.textContent = (totalExpense === 0) ? "$0": formatter(totalExpense);
+  budgetId.textContent = (totalBudget === 0) ? "$0" : formatter(totalBudget);
 }
 
 displayNumbers();
+
 function toggleForm(item) {
-  item.classList.toggle('hidden');
+  item.classList.toggle('open');
+  item.classList.toggle('closed');
 }
 
 editBudget.addEventListener('click', () => {
   toggleForm(formBudget);
-  budgetInFrom.textContent = (totalBudget === 0) ? "-" : `$${totalBudget.toLocaleString()}`;
+  budgetInFrom.textContent = budgetId.textContent;
   newBudget.focus();
+});
+
+closeBudget.addEventListener('click', (e) => {
+  e.preventDefault();
+  toggleForm(formBudget);
 });
 
 newRecord.addEventListener('click', () => {
@@ -47,12 +58,6 @@ closeRecord.addEventListener('click', (e) => {
   e.preventDefault();
   toggleForm(formRecord);
 });
-
-closeBudget.addEventListener('click', (e) => {
-  e.preventDefault();
-  toggleForm(formBudget);
-});
-
 
 newBudget.addEventListener('input', function() {
   // Remove non-numeric characters
@@ -80,11 +85,24 @@ submitBudget.addEventListener('click', (e) => {
   displayNumbers();
   toggleForm(formBudget);
   localStorage.setItem('totalBudget', totalBudget)
+  newBudget.value = '';
 });
 
-formBudget.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    event.preventDefault();
+formBudget.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
     submitBudget.click();
   }
 });
+
+// const sumbitRecord = document.querySelector("#submit-record")
+// submitRecord.addEventListener('click', (e) => {
+//   e.preventDefault();
+// });
+
+// formRecord.addEventListener('keydown', (e) => {
+//   if (e.key === 'Enter') {
+//     e.preventDefault();
+//     sumbitRecord.click();
+//   }
+// });

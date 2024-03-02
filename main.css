@@ -48,14 +48,14 @@
     transform: translateY(100%);
     opacity: 0; /* Hide the form */
     transition: transform 0.4s ease-in, opacity 0.4s ease-in; /* Apply transition */
+    
   }
   
   /* CSS for the open state */
   .open {
     /* Move the form into place */
-    transform: translateY(0);
+    transform: translateY();
     opacity: 1; /* Show the form */
-    transition: transform 0.4s ease-out, opacity 0.4s ease-out; /* Apply transition */
   }
 
   

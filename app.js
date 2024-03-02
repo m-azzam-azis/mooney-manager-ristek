@@ -45,10 +45,10 @@ editBudget.addEventListener('click', () => {
   newBudget.focus();
 });
 
-closeBudget.addEventListener('click', (e) => {
-  e.preventDefault();
-  toggleForm(formBudget);
-});
+// closeBudget.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   toggleForm(formBudget);
+// });
 
 newRecord.addEventListener('click', () => {
   toggleForm(formRecord);
@@ -94,6 +94,23 @@ formBudget.addEventListener('keydown', (e) => {
     submitBudget.click();
   }
 });
+
+formBudget.addEventListener('click', (e) => {
+  if (e.target === formBudget || e.target === closeBudget) {
+    e.stopPropagation();
+    if (!formBudget.contains(e.target)) {
+      formBudget.reset();
+    }
+    toggleForm(formBudget);
+  }
+});
+
+closeBudget.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent the default action of the close button
+  e.stopPropagation(); // Prevent the event from propagating further
+  toggleForm(formBudget);
+});
+
 
 // const sumbitRecord = document.querySelector("#submit-record")
 // submitRecord.addEventListener('click', (e) => {

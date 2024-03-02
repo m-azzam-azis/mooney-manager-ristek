@@ -57,5 +57,6 @@
     opacity: 1; /* Show the form */
     transition: transform 0.4s ease-out, opacity 0.4s ease-out; /* Apply transition */
   }
+
   
 }

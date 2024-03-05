@@ -39,7 +39,7 @@
         <h2 class="text-xl font-bold z-10 md:text-2xl">Add a new transaction record right now!</h2>
         <button
           class="bg-neutral-900 h-14 rounded-xl w-full text-main text-sm font-bold z-10 hover:bg-transparent hover:backdrop-blur-3xl border-2 border-black hover:text-black duration-200 md:w-2/3 md:text-base"
-          id="new-record">
+          id="new-record-button">
           Create new record &nbsp;&rarr;
         </button>
       </div>
@@ -50,7 +50,7 @@
           <h4 class="text-neutral-900 font-transaction" id="budget"></h4>
         </div>
         <button class="text-yellow-600 text-start text-base hover:translate-x-2 duration-200 w-fit"
-          id="edit-budget">Edit Budget
+          id="budget-edit-button">Edit Budget
           &nbsp;&rarr;</button>
       </div>
 
@@ -79,47 +79,40 @@
   </footer>
 
   <section
-    class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16 closed flex justify-center items-center closed transition duration-500"
-    id="form-budget">
+    class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16  flex justify-center items-center closed transition duration-500"
+    id="budget-form">
     <form class="bg-white rounded-xl h-fit w-full max-w-2xl p-2 sm:p-4" id="budget-form">
-      <label for="new-budget" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
-        Edit Budget <button id="close-budget" class="font-extralight">&#x2715;</button>
+      <label for="budget-form" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
+        Edit Budget <button id="budget-close-button" class="font-extralight">&#x2715;</button>
       </label>
       <div class="flex flex-col gap-4 p-4">
         <div class="md:py-1">
           <p class="text-neutral-500 font-normal text-sm md:text-lg">Budget</p>
-          <h4 class="text-neutral-900 font-transaction" id="budget-in-form"></h4>
+          <h4 class="text-neutral-900 font-transaction" id="budget-form-label"></h4>
         </div>
         <div class="md:py-1">
-          <p class="text-neutral-500 font-normal text-sm md:text-lg">New Budget</p>
-          <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1" type="text" name="currency-field" id="new-budget"
-            required autocomplete="off" data-type="currency" placeholder="$1,000">
+          <label for="budget-input" class="text-neutral-500 font-normal text-sm md:text-lg">New Budget<label />
+            <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1 " type="text" name="currency-field" id="budget-input"
+              required autocomplete="off" data-type="currency" placeholder="$1,000">
         </div>
-        <button id="submit-budget" type="submit"
-          class="bg-main w-full md:text-lg font-bold text-base py-3 flex justify-center items-center rounded-xl hover:ring-shadow">Submit</button>
+        <button
+          class="bg-main w-full md:text-lg font-bold text-base py-3 flex justify-center items-center rounded-xl hover:ring-shadow"
+          id="budget-submit-button" type="submit">
+          Submit
+        </button>
       </div>
     </form>
   </section>
 
 
-  <section class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16 closed flex justify-center items-center closed transition duration-500" id="form-record">
+  <section
+    class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16 flex justify-center items-center closed transition duration-500"
+    id="record-form">
     <form class="bg-white rounded-xl h-fit w-full max-w-2xl p-2 sm:p-4">
-      <label for="new-record" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
-        New Record <button id="close-record" class="font-extralight">&#x2715;</button>
+      <label for="record-form" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
+        New Record <button id="record-close-button" class="font-extralight">&#x2715;</button>
       </label>
-      <div class="flex flex-col gap-4 p-4">
-        <div class="md:py-1">
-          <p class="text-neutral-500 font-normal text-sm md:text-lg">record</p>
-          <h4 class="text-neutral-900 font-transaction" id="record-in-form"></h4>
-        </div>
-        <div class="md:py-1">
-          <p class="text-neutral-500 font-normal text-sm md:text-lg">New record</p>
-          <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1" type="text" name="currency-field" id="new-record"
-            data-type="currency" placeholder="$1,000">
-        </div>
-        <button id="submit-record" type="submit"
-          class="bg-main w-full md:text-lg font-bold text-base py-3 flex justify-center items-center rounded-xl hover:ring-shadow">Submit</button>
-      </div>
+
     </form>
   </section>
 

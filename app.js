@@ -1,18 +1,19 @@
-const incomeId = document.querySelector("#income");
-const expenseId = document.querySelector("#expense");
-const budgetId = document.querySelector("#budget");
+const incomeDisplay = document.querySelector("#income");
+const expenseDisplay = document.querySelector("#expense");
+const budgetDisplay = document.querySelector("#budget");
 
-const editBudget = document.querySelector("#edit-budget");
-const newRecord = document.querySelector("#new-record");
+const budgetEditButton = document.querySelector("#budget-edit-button");
+const newRecordButton = document.querySelector("#new-record-button");
 
-const closeBudget = document.querySelector('#close-budget');
-const formBudget = document.querySelector('#form-budget');
+const budgetCloseButton = document.querySelector('#budget-close-button');
+const budgetForm = document.querySelector('#budget-form');
+const budgetSubmitButton = document.querySelector("#budget-submit-button")
 
-const closeRecord = document.querySelector('#close-record');
-const formRecord = document.querySelector('#form-record');
+const recordCloseButton = document.querySelector('#record-close-button');
+const recordForm = document.querySelector('#record-form');
 
-const budgetInFrom = document.querySelector("#budget-in-form");
-const newBudget = document.querySelector("#new-budget");
+const budgetFormLabel = document.querySelector("#budget-form-label");
+const budgetInput = document.querySelector("#budget-input");
 
 let totalIncome = parseInt(localStorage.getItem("totalIncome")) || 0;
 let totalExpense = parseInt(localStorage.getItem("totalExpense")) || 0;
@@ -27,9 +28,9 @@ const formatter = (item) => {
 }
 
 function displayNumbers() {
-  incomeId.textContent = (totalIncome === 0) ? "$0" : formatter(totalIncome);
-  expenseId.textContent = (totalExpense === 0) ? "$0": formatter(totalExpense);
-  budgetId.textContent = (totalBudget === 0) ? "$0" : formatter(totalBudget);
+  incomeDisplay.textContent = (totalIncome === 0) ? "$0" : formatter(totalIncome);
+  expenseDisplay.textContent = (totalExpense === 0) ? "$0": formatter(totalExpense);
+  budgetDisplay.textContent = (totalBudget === 0) ? "$0" : formatter(totalBudget);
 }
 
 displayNumbers();
@@ -39,35 +40,45 @@ function toggleForm(item) {
   item.classList.toggle('closed');
 }
 
-editBudget.addEventListener('click', () => {
-  toggleForm(formBudget);
-  budgetInFrom.textContent = budgetId.textContent;
-  newBudget.focus();
+budgetEditButton.addEventListener('click', () => {
+  toggleForm(budgetForm);
+  budgetFormLabel.textContent = budgetDisplay.textContent;
+  budgetInput.focus();
 });
 
-// closeBudget.addEventListener('click', (e) => {
+// budgetCloseButton.addEventListener('click', (e) => {
 //   e.preventDefault();
-//   toggleForm(formBudget);
+//   toggleForm(budgetForm);
 // });
 
-newRecord.addEventListener('click', () => {
-  toggleForm(formRecord);
+newRecordButton.addEventListener('click', () => {
+  toggleForm(recordForm);
 });
 
-closeRecord.addEventListener('click', (e) => {
-  e.preventDefault();
-  toggleForm(formRecord);
-});
+// recordCloseButton.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   toggleForm(recordForm);
+// });
 
-newBudget.addEventListener('input', function() {
+budgetInput.addEventListener('input', function() {
   // Remove non-numeric characters
-  let input = this.value.replace(/\D/g, '');
-  if (+input < 1) {
-    this.value = '';
+  this.value = this.value.replace(/\D/g, '');
+  let input = this.value;
+
+  if (+input < 1 || (input.startsWith('0') && input.length > 1)) {
+    if (input === '0') {
+      this.value = '0';
+    } else if (input.length > 1) {
+      // Allow overwriting '0' with another character
+      if (input[0] === '0') {
+        input = "$" + input.slice(1);
+      }
+      this.value = input;
+    }
   } else {
+    budgetInput.classList.remove("ring-2", "ring-red-500" ,"ring-inset");
     // Format currency
     input = input.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
     input = '$' + input;
 
     // Update input value
@@ -75,49 +86,54 @@ newBudget.addEventListener('input', function() {
   }
 });
 
-const submitBudget = document.querySelector("#submit-budget")
-submitBudget.addEventListener('click', (e) => {
+budgetSubmitButton.addEventListener('click', (e) => {
   e.preventDefault();
-  totalBudget = parseInt(newBudget.value.replace(/\D/g, ''));
-  if (isNaN(totalBudget) || totalBudget < 1) {
+  totalBudget = parseInt(budgetInput.value.replace(/\D/g, ''));
+  if (isNaN(totalBudget) || totalBudget < 0) {
+    budgetInput.classList.add("ring-2", "ring-red-500" ,"ring-inset");
     return;
   } 
   displayNumbers();
-  toggleForm(formBudget);
+  toggleForm(budgetForm);
   localStorage.setItem('totalBudget', totalBudget)
-  newBudget.value = '';
+  budgetInput.value = '';
 });
 
-formBudget.addEventListener('keydown', (e) => {
+budgetForm.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
-    submitBudget.click();
+    budgetSubmitButton.click();
   }
 });
 
-formBudget.addEventListener('click', (e) => {
-  if (e.target === formBudget || e.target === closeBudget) {
-    e.stopPropagation();
-    if (!formBudget.contains(e.target)) {
-      formBudget.reset();
+budgetForm.addEventListener('click', (e) => {
+  if (e.target === budgetForm || e.target === budgetCloseButton) {
+    e.preventDefault();
+    if (!budgetForm.contains(e.target)) {
+      budgetForm.reset();
     }
-    toggleForm(formBudget);
+    budgetInput.classList.remove("ring-2", "ring-red-500" ,"ring-inset");
+    budgetInput.value = '';
+    toggleForm(budgetForm);
   }
 });
 
-closeBudget.addEventListener('click', (e) => {
-  e.preventDefault(); // Prevent the default action of the close button
-  e.stopPropagation(); // Prevent the event from propagating further
-  toggleForm(formBudget);
+recordForm.addEventListener('click', (e) => {
+  if (e.target === recordForm || e.target === recordCloseButton) {
+    e.preventDefault();
+    if (!recordForm.contains(e.target)) {
+      recordForm.reset();
+    }
+    toggleForm(recordForm);
+  }
 });
-
 
 // const sumbitRecord = document.querySelector("#submit-record")
 // submitRecord.addEventListener('click', (e) => {
 //   e.preventDefault();
 // });
 
-// formRecord.addEventListener('keydown', (e) => {
+// recordForm.addEventListener('keydown', (e) => {
 //   if (e.key === 'Enter') {
 //     e.preventDefault();
 //     sumbitRecord.click();

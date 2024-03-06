@@ -16,7 +16,7 @@ export function createTransactionHistoryItem(transaction) {
         <p class="font-bold text-sm transaction-category md:text-base">${transaction.category}</p>
       </div>
       <div class="flex gap-4 w-full">
-        <img src="${transaction.url}" alt="${transaction.category}-icon" height="48px" width="48px">
+        <img src="./icons${transaction.url}" alt="${transaction.category}-icon" height="48px" width="48px">
         <div class="flex flex-col text-clip flex-1 truncate w-max-full">
           <h4 class="truncate text-base sm:text-lg md:text-xl font-bold transaction-name">${transaction.name}</h4>
           <p class=" truncate font-thin text-neutral-500 text-sm md:text-base">${transaction.description}</p>

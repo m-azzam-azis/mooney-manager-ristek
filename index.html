@@ -79,7 +79,7 @@
   </footer>
 
   <section
-    class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16  flex justify-center items-center closed transition duration-500"
+    class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16  flex justify-center items-center closed transition duration-500 overflow-y-scroll"
     id="budget-form">
     <form class="bg-white rounded-xl h-fit w-full max-w-2xl p-2 sm:p-4" id="budget-form">
       <label for="budget-form" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
@@ -106,13 +106,64 @@
 
 
   <section
-    class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16 flex justify-center items-center closed transition duration-500"
+    class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16 flex justify-center items-center closed transition duration-500 overflow-y-scroll"
     id="record-form">
     <form class="bg-white rounded-xl h-fit w-full max-w-2xl p-2 sm:p-4">
       <label for="record-form" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
         New Record <button id="record-close-button" class="font-extralight">&#x2715;</button>
       </label>
+      <div class="flex gap-4 p-4 flex-wrap md:gap-6">
 
+        <div class="flex w-full bg-neutral-50 rounded-xl" name="income-expense-choice" id="income-expense-choice">
+          <button
+            class="flex-1 flex justify-center items-center text-sm md:text-base font-normal rounded-xl hover:ring-1 ring-inset ring-main py-4 transition-colors"
+            id="income-choice">Income</button>
+          <button
+            class="flex-1 flex justify-center items-center text-sm md:text-base font-normal rounded-xl hover:ring-1 ring-inset ring-main py-4 transition-colors"
+            id="expense-choice">Expense</button>
+        </div>
+
+        <div class="flex md:flex-1 w-full flex-col gap-2 md:gap-4 md:w-1/2">
+          <label class="text-neutral-500 font-normal text-sm md:text-lg" for="order-category">Categories</label>
+          <select class="bg-neutral-50 text-sm md:text-base rounded-xl p-4" name="order-category" id="order-category">
+            <option value="" disabled selected>Select Category</option>
+            <option value="Salary">Salary</option>
+            <option value="Housing">Housing</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Food">Food & Drinks</option>
+            <option value="Bills">Bills</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+
+        <div class="flex md:flex-1 w-full flex-col gap-2 md:gap-4 md:w-1/2">
+          <label class="text-neutral-500 font-normal text-sm md:text-lg" for="order-name">Transaction Name</label>
+          <input class="bg-neutral-50 text-sm md:text-base rounded-xl p-4" type="text" required id="order-name"
+            placeholder="Pay rent, car payment, etc">
+        </div>
+        <div class="flex w-full flex-col gap-2 md:gap-4 text-neutral-500 font-normal text-sm md:text-lg">
+          <label for="order-description">Description</label>
+          <textarea 
+          class="bg-neutral-50 text-sm md:text-base rounded-xl p-4" 
+          type="text" 
+          name="order-description"
+          id="order-description" 
+          rows="4" 
+          cols="0"
+          placeholder="Additional Description for the transaction"></textarea>
+        </div>
+
+        <div class="md:py-1 w-full">
+          <label for="order-input" class="text-neutral-500 font-normal text-sm md:text-lg">Amount</label>
+          <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1 " type="text" name="currency-field" id="order-input"
+              required autocomplete="off" data-type="currency" placeholder="$1,000">
+        </div>
+        <button
+          class="bg-main w-full md:text-lg font-bold text-base py-3 flex justify-center items-center rounded-xl hover:ring-shadow"
+          id="order-submit-button" type="submit">
+          Submit
+        </button>
+      </div>
     </form>
   </section>
 

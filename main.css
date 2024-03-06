@@ -58,5 +58,11 @@
     opacity: 1; /* Show the form */
   }
 
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
   
 }

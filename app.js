@@ -1,4 +1,8 @@
+import { createTransactionHistoryItem } from './historyComponent.js';
+
 const date = new Date();
+
+const transactionHistoryContainer = document.querySelector('#history-container');
 
 const incomeDisplay = document.querySelector("#income");
 const expenseDisplay = document.querySelector("#expense");
@@ -28,6 +32,10 @@ let totalBudget = parseInt(localStorage.getItem("totalBudget")) || 0;
 
 let listOfOrders = JSON.parse(localStorage.getItem('listOfOrders')) || [];
 
+listOfOrders.forEach(transaction => {
+  transactionHistoryContainer.innerHTML += createTransactionHistoryItem(transaction);
+});
+
 const formatter = (item) => {
   return "$" + item.toLocaleString('en-us');
 }
@@ -35,7 +43,11 @@ const formatter = (item) => {
 function displayNumbers() {
   incomeDisplay.textContent = (totalIncome === 0) ? "$0" : formatter(totalIncome);
   expenseDisplay.textContent = (totalExpense === 0) ? "$0": formatter(totalExpense);
-  budgetDisplay.textContent = (totalBudget === 0) ? "$0" : formatter(totalBudget);
+  if (totalBudget < 0) {
+    budgetDisplay.textContent = `-$${totalBudget*-1}`
+  } else {
+    budgetDisplay.textContent = (totalBudget === 0) ? "$0" : formatter(totalBudget);
+  }
 }
 
 displayNumbers();
@@ -61,12 +73,12 @@ function resetInput() {
 
 function getIconUrl(selectedCategory) {
   switch(selectedCategory) {
-    case("Salary"): return "./icons/income-icon.png"
-    case("Housing"): return "./icons/housing-icon.png"
-    case("Transportation"): return "./icons/transport-icon.png"
-    case("Food"): return "./icons/food-icon.png"
-    case("Bills"): return "./icons/bill-icon.png"
-    case("Others"): return "./icons/other-icon.png"
+    case("Salary"): return "./images/income-icon.png"
+    case("Housing"): return "./images/housing-icon.png"
+    case("Transportation"): return "./images/transport-icon.png"
+    case("Food"): return "./images/food-icon.png"
+    case("Bills"): return "./images/bill-icon.png"
+    case("Others"): return "./images/other-icon.png"
   }
 }
 
@@ -224,29 +236,9 @@ orderInput.addEventListener('input', function() {
 
 orderSubmitButton.addEventListener('click', (e) => {
   e.preventDefault();
-  if (!orderCategory.value) {
-    orderCategory.classList.add("ring-2", "ring-red-500");
+  if (!orderCategory.value || !orderName.value || !orderInput.value) {
+    alert("Please fill in all the fields")
     return;
-  }
-  
-  if (!orderName.value) {
-    orderName.classList.add("ring-2", "ring-red-500" ,"ring-inset");
-    return;
-  }
-  
-  if (!orderInput.value) {
-    orderInput.classList.add("ring-2", "ring-red-500" ,"ring-inset");
-    return;
-  }
-  
-  // rest of the code
-  
-  // combine all the else blocks at the bottom
-  if (orderCategory.value && orderName.value && orderDescription.value && orderInput.value) {
-    orderCategory.classList.remove("ring-2", "ring-red-500" ,"ring-inset");
-    orderName.classList.remove("ring-2", "ring-red-500" ,"ring-inset");
-    orderDescription.classList.remove("ring-2", "ring-red-500" ,"ring-inset");
-    orderInput.classList.remove("ring-2", "ring-red-500" ,"ring-inset");
   }
 
   let category;
@@ -274,8 +266,45 @@ orderSubmitButton.addEventListener('click', (e) => {
   localStorage.setItem('totalExpense', totalExpense);
   localStorage.setItem('totalBudget', totalBudget);
   localStorage.setItem('listOfOrders', JSON.stringify(listOfOrders));
-  console.table(listOfOrders);
+
+  transactionHistoryContainer.innerHTML += createTransactionHistoryItem(newObject);
+
   resetInput();
   displayNumbers();
   toggleForm(recordForm);
+});
+
+const searchTransaction = document.querySelector("#search-transaction");
+searchTransaction.addEventListener('input', (e) => {
+  const searchText = e.target.value.toLowerCase();
+  const transactionItems = document.querySelectorAll(".transaction-item");
+
+  transactionItems.forEach(item => {
+    const transactionName = item.querySelector(".transaction-name").textContent.toLowerCase();
+    if (transactionName.includes(searchText)) {
+      item.style.display = "flex";
+    } else {
+      item.style.display = "none";
+    }
+  });
+});
+
+const filterCategory = document.querySelector("#filter-category");
+filterCategory.addEventListener('input', (e) => {
+  const searchText = e.target.value.toLowerCase();
+  const transactionItems = document.querySelectorAll(".transaction-item");
+
+
+  transactionItems.forEach(item => {
+    const transactionName = item.querySelector(".transaction-category").textContent.toLowerCase();
+    if (searchText === 'all') {
+      item.style.display = "flex";
+      return;
+    }
+    if (transactionName.includes(searchText)) {
+      item.style.display = "flex";
+    } else {
+      item.style.display = "none";
+    }
+  });
 });

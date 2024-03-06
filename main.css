@@ -35,11 +35,11 @@
   }
 
   .font-description {
-    @apply text-neutral-500 font-normal text-base;
+    @apply text-neutral-500 font-normal text-base md:text-xl lg:text-lg;
   }
 
   .font-transaction {
-    @apply font-bold mt-1 text-lg md:text-xl;
+    @apply font-bold mt-1 text-lg md:text-xl lg:text-lg;
   }
 
 

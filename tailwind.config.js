@@ -2,7 +2,7 @@
 
 export default {
   content: ["./index.html", // Include the root HTML file
-    "./pages/**/*.{html,js}",], // Include files within the "pages" folder],
+    "./*.{html,js}",], // Include files within the "pages" folder],
   theme: {
     extend: {
       colors: {

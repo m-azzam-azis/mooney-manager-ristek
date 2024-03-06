@@ -12,7 +12,7 @@
 <body class="min-w-screen min-h-screen flex flex-col bg-neutral-50 ">
 
   <header
-    class="bg-white flex justify-between p-4 items-center border-b-2 sm:px-10 md:px-6 md:mx-10 md:mt-4 md:rounded-2xl ring-shadow xl:mx-[72px] 2xl:mx-36">
+    class="bg-white flex justify-between p-4 items-center border-b-2 sm:px-10 md:px-6 md:mx-10 md:mt-4 md:rounded-2xl ring-shadow self-stretch">
     <a href="/">
       <div
         class=" hover:backdrop-brightness-200 text-base text-black bg-main backdrop-blur-3xl font-extrabold   hover:bg-black hover:text-main duration-200 rounded-md p-2">
@@ -24,7 +24,7 @@
     </a>
   </header>
 
-  <main class="flex flex-col gap-6 flex-1 bg-neutral-50 p-4 sm:px-10 md:px-16 w-fit mx-auto">
+  <main class="flex flex-col gap-6 flex-1 bg-neutral-50 p-4 sm:px-10 md:px-16 mx-auto w-full max-w-[1600px]">
     <section class="flex flex-col gap-1 group">
       <h1 class="font-bold flex gap-1 w-fit md:text-4xl [font-size:_clamp(2em,5vw,10em)]">
         Hi, you &nbsp;<span class=" wave group-hover:infinite bg-yellow-100 rounded-full">👋<span />
@@ -47,7 +47,7 @@
       <div class="w-full bg-white rounded-xl p-3 flex gap-6 flex-col ring-shadow md:flex-1 sm:p-5 sm:flex-2 ">
         <div>
           <p class="font-description">Budget</p>
-          <h4 class="text-neutral-900 font-transaction" id="budget"></h4>
+          <h4 class="text-neutral-900 font-transaction md:text-xl" id="budget"></h4>
         </div>
         <button class="text-yellow-600 text-start text-base hover:translate-x-2 duration-200 w-fit"
           id="budget-edit-button">Edit Budget
@@ -65,6 +65,29 @@
       </div>
     </section>
 
+    <section class="w-full bg-white rounded-xl p-4 flex gap-6 flex-col ring-shadow sm:p-6">
+      <h4 class="text-xl md:text-2xl font-bold">Transaction History</h4>
+      <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1 md:flex-1" type="text" placeholder="Search transaction name"
+      id="search-transaction">
+
+      <div class="flex flex-col gap-2 md:gap-4 md:flex-1">
+        <label class="text-neutral-500 font-normal text-sm md:text-lg" for="filter-category">Filter Category</label>
+        <select class="bg-neutral-50 text-sm md:text-base rounded-xl p-4" name="filter-category" id="filter-category">
+          <option value="" disabled selected>Select Category</option>
+          <option value="all" >All</option>
+          <option value="Salary">Salary</option>
+          <option value="Housing">Housing</option>
+          <option value="Transportation">Transportation</option>
+          <option value="Food">Food & Drinks</option>
+          <option value="Bills">Bills</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-2" id="history-container">
+
+      </div>
+    </section>
 
 
   </main>
@@ -73,7 +96,7 @@
     Copyright ©
     <script>document.write(new Date().getFullYear())</script> Azzam
     <a href="https://github.com/m-azzam-azis/" target="_blank">
-      <img class="hover:rotate-[360deg] duration-500" src="./icons/github-mark.svg" alt="github logo" height="20px"
+      <img class="hover:rotate-[360deg] duration-500" src="./images/github-mark.svg" alt="github logo" height="20px"
         width="20px">
     </a>
   </footer>

@@ -300,3 +300,34 @@ filterCategory.addEventListener('input', (e) => {
     }
   });
 });
+
+const resetHistoryButton = document.querySelector("#reset-history")
+resetHistoryButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  let resetConfirm = window.confirm("Are you sure, you will lose all previous history")
+  if (resetConfirm) {
+    localStorage.clear();
+    window.location.reload();
+  } 
+});
+
+
+const graphContainer = document.querySelector("#graph-container")
+new Chart(graphContainer, {
+  type: 'pie',
+  data: {
+    labels: ['Income', 'Expense'],
+      datasets: [{
+        label: 'total income',
+        data: [totalIncome, totalExpense],
+        borderWidth: 1
+      }]
+  }, 
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+})

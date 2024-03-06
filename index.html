@@ -18,10 +18,13 @@
         class=" hover:backdrop-brightness-200 text-base text-black bg-main backdrop-blur-3xl font-extrabold   hover:bg-black hover:text-main duration-200 rounded-md p-2">
         Mooney Manager</div>
     </a>
-    <a href="/" class="hover:-translate-x-1 duration-200">
-      <img class="size-[2em] border-gray-300 border rounded-full sm:size-[2.5em]" src="images/honey-icon.png"
-        alt="logo">
-    </a>
+    <divc class="flex gap-4">
+      <button class="bg-neutral-200 rounded-lg p-2 font-bold md:mr-8" id="reset-history">Reset History</button>
+      <a href="/" class="hover:-translate-x-1 duration-200">
+        <img class="size-[2em] border-gray-300 border rounded-full sm:size-[2.5em]" src="images/honey-icon.png"
+          alt="logo">
+      </a>
+    </divc>
   </header>
 
   <main class="flex flex-col gap-6 flex-1 bg-neutral-50 p-4 sm:px-10 md:px-16 mx-auto w-full max-w-[1600px]">
@@ -87,6 +90,14 @@
       <div class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-2" id="history-container">
 
       </div>
+    </section>
+
+    <section class="w-full bg-white rounded-xl p-4 flex gap-6 flex-col ring-shadow sm:p-6">
+      <h4 class="text-xl md:text-2xl font-bold">Graph</h4>
+      <label for="graph-container">Refresh page to update graph!</label>
+      <canvas class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-2" id="graph-container">
+
+      </canvas>
     </section>
 
 
@@ -190,6 +201,7 @@
     </form>
   </section>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./app.js" type="module"></script>
 
 </body>

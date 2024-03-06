@@ -73,12 +73,12 @@ function resetInput() {
 
 function getIconUrl(selectedCategory) {
   switch(selectedCategory) {
-    case("Salary"): return "./images/income-icon.png"
-    case("Housing"): return "./images/housing-icon.png"
-    case("Transportation"): return "./images/transport-icon.png"
-    case("Food"): return "./images/food-icon.png"
-    case("Bills"): return "./images/bill-icon.png"
-    case("Others"): return "./images/other-icon.png"
+    case("Salary"): return "/icons/income-icon.png"
+    case("Housing"): return "/icons/housing-icon.png"
+    case("Transportation"): return "/icons/transport-icon.png"
+    case("Food"): return "/icons/food-icon.png"
+    case("Bills"): return "/icons/bill-icon.png"
+    case("Others"): return "/icons/other-icon.png"
   }
 }
 

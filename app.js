@@ -88,10 +88,6 @@ budgetEditButton.addEventListener('click', () => {
   budgetInput.focus();
 });
 
-// budgetCloseButton.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   toggleForm(budgetForm);
-// });
 
 newRecordButton.addEventListener('click', () => {
   if (!expenseChoiceSelected && !incomeChoiceSelected) {
@@ -102,10 +98,6 @@ newRecordButton.addEventListener('click', () => {
   toggleForm(recordForm);
 });
 
-// recordCloseButton.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   toggleForm(recordForm);
-// });
 
 budgetInput.addEventListener('input', function() {
   // Remove non-numeric characters

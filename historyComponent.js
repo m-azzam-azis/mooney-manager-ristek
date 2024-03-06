@@ -1,3 +1,5 @@
+import './icons';
+
 export function createTransactionHistoryItem(transaction) {
   let amountClass = '';
   if (transaction.type === 'expense') {

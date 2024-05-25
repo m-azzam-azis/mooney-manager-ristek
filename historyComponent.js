@@ -1,13 +1,17 @@
 export function createTransactionHistoryItem(transaction) {
-  let amountClass = '';
-  if (transaction.type === 'expense') {
-    amountClass = 'text-mainRed';
-  } else if (transaction.type === 'income') {
-    amountClass = 'text-mainGreen';
+  let amountClass = "";
+  if (transaction.type === "expense") {
+    amountClass = "text-mainRed";
+  } else if (transaction.type === "income") {
+    amountClass = "text-mainGreen";
   }
   const date = new Date(transaction.date);
   const dateString = date.toLocaleDateString();
-  const timeString = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const timeString = date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
 
   return `
     <div class="flex flex-col ring-shadow rounded-lg p-4 md:p-8 gap-4 transaction-item">
@@ -25,10 +29,6 @@ export function createTransactionHistoryItem(transaction) {
       </div>
       <div class="border border-neutral-300"> </div>
       <div class="${amountClass} flex-1 text-end font-bold text-lg md:text-2xl">${transaction.amount}</div>
-
-      
     </div>
   `;
 }
-
-// <div class="border border-neutral-300"> </div>

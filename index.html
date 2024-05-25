@@ -9,75 +9,75 @@
   <title>Mooney manager</title>
 </head>
 
-<body class="min-w-screen min-h-screen flex flex-col bg-neutral-50 ">
+<body class="flex flex-col min-h-screen min-w-screen bg-neutral-50 ">
 
   <header
-    class="bg-white flex justify-between p-4 items-center border-b-2 sm:px-10 md:px-6 md:mx-10 md:mt-4 md:rounded-2xl ring-shadow self-stretch">
+    class="flex items-center self-stretch justify-between p-4 bg-white border-b-2 sm:px-10 md:px-6 md:mx-10 md:mt-4 md:rounded-2xl ring-shadow">
     <a href="/">
       <div
-        class=" hover:backdrop-brightness-200 text-base text-black bg-main backdrop-blur-3xl font-extrabold   hover:bg-black hover:text-main duration-200 rounded-md p-2">
+        class="p-2 text-base font-extrabold text-black duration-200 rounded-md hover:backdrop-brightness-200 bg-main backdrop-blur-3xl hover:bg-black hover:text-main">
         Mooney Manager</div>
     </a>
-    <divc class="flex gap-4">
-      <button class="bg-neutral-200 rounded-lg p-2 font-bold md:mr-8" id="reset-history">Reset History</button>
-      <a href="/" class="hover:-translate-x-1 duration-200">
+    <div class="flex gap-4">
+      <button class="p-2 font-bold rounded-lg bg-neutral-200 md:mr-8" id="reset-history">Reset History</button>
+      <a href="/" class="duration-200 hover:-translate-x-1">
         <img class="size-[2em] border-gray-300 border rounded-full sm:size-[2.5em]" src="images/honey-icon.png"
           alt="logo">
       </a>
-    </divc>
+    </div>
   </header>
 
   <main class="flex flex-col gap-6 flex-1 bg-neutral-50 p-4 sm:px-10 md:px-16 mx-auto w-full max-w-[1600px]">
     <section class="flex flex-col gap-1 group">
       <h1 class="font-bold flex gap-1 w-fit md:text-4xl [font-size:_clamp(2em,5vw,10em)]">
-        Hi, you &nbsp;<span class=" wave group-hover:infinite bg-yellow-100 rounded-full">👋<span />
+        Hi, you &nbsp;<span class="bg-yellow-100 rounded-full wave group-hover:infinite">👋</span>
       </h1>
-      <div class="font-light text-sm text-neutral-500 md:text-base">Welcome to your financial manager app!</div>
+      <div class="text-sm font-light text-neutral-500 md:text-base">Welcome to your financial manager app!</div>
     </section>
 
-    <section class="flex flex-wrap gap-4 relative sm:gap-6">
+    <section class="relative flex flex-wrap gap-4 sm:gap-6">
       <div
-        class="flex flex-col gap-6 w-full bg-main py-6 px-4 rounded-xl ring-1 ring-yellow-500 shadow-sm overflow-hidden relative md:flex-row sm:p-6 hover:shadow-md duration-300">
+        class="relative flex flex-col w-full gap-6 px-4 py-6 overflow-hidden duration-300 shadow-sm bg-main rounded-xl ring-1 ring-yellow-500 md:flex-row sm:p-6 hover:shadow-md">
         <img class="absolute top-0 left-0 z-auto rounded-tl-xl" src="icons/Ellipse 1.svg" alt="ellipse decoration">
-        <h2 class="text-xl font-bold z-10 md:text-2xl">Add a new transaction record right now!</h2>
+        <h2 class="z-10 text-xl font-bold md:text-2xl">Add a new transaction record right now!</h2>
         <button
-          class="bg-neutral-900 h-14 rounded-xl w-full text-main text-sm font-bold z-10 hover:bg-transparent hover:backdrop-blur-3xl border-2 border-black hover:text-black duration-200 md:w-2/3 md:text-base"
+          class="z-10 w-full text-sm font-bold duration-200 border-2 border-black bg-neutral-900 h-14 rounded-xl text-main hover:bg-transparent hover:backdrop-blur-3xl hover:text-black md:w-2/3 md:text-base"
           id="new-record-button">
           Create new record &nbsp;&rarr;
         </button>
       </div>
 
-      <div class="w-full bg-white rounded-xl p-3 flex gap-6 flex-col ring-shadow md:flex-1 sm:p-5 sm:flex-2 ">
+      <div class="flex flex-col w-full gap-6 p-3 bg-white rounded-xl ring-shadow md:flex-1 sm:p-5 sm:flex-2 ">
         <div>
           <p class="font-description">Budget</p>
           <h4 class="text-neutral-900 font-transaction md:text-xl" id="budget"></h4>
         </div>
-        <button class="text-yellow-600 text-start text-base hover:translate-x-2 duration-200 w-fit"
+        <button class="text-base text-yellow-600 duration-200 text-start hover:translate-x-2 w-fit"
           id="budget-edit-button">Edit Budget
           &nbsp;&rarr;</button>
       </div>
 
-      <div class="flex-1 bg-white flex p-3 flex-col rounded-xl gap-1 ring-shadow sm:p-5">
+      <div class="flex flex-col flex-1 gap-1 p-3 bg-white rounded-xl ring-shadow sm:p-5">
         <div class="font-description">Income</div>
         <h4 class="text-mainGreen font-transaction" id="income"></h4>
       </div>
 
-      <div class="flex-1 bg-white flex p-3 flex-col rounded-xl gap-1 ring-shadow sm:p-5 ">
-        <div class="font-description ">Expense </div>
+      <div class="flex flex-col flex-1 gap-1 p-3 bg-white rounded-xl ring-shadow sm:p-5">
+        <div class="font-description">Expense</div>
         <h4 class="text-mainRed font-transaction" id="expense"></h4>
       </div>
     </section>
 
-    <section class="w-full bg-white rounded-xl p-4 flex gap-6 flex-col ring-shadow sm:p-6">
-      <h4 class="text-xl md:text-2xl font-bold">Transaction History</h4>
-      <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1 md:flex-1" type="text" placeholder="Search transaction name"
-      id="search-transaction">
+    <section class="flex flex-col w-full gap-6 p-4 bg-white rounded-xl ring-shadow sm:p-6">
+      <h4 class="text-xl font-bold md:text-2xl">Transaction History</h4>
+      <input class="w-full p-3 mt-1 bg-neutral-50 rounded-xl md:flex-1" type="text"
+        placeholder="Search transaction name" id="search-transaction">
 
       <div class="flex flex-col gap-2 md:gap-4 md:flex-1">
-        <label class="text-neutral-500 font-normal text-sm md:text-lg" for="filter-category">Filter Category</label>
-        <select class="bg-neutral-50 text-sm md:text-base rounded-xl p-4" name="filter-category" id="filter-category">
+        <label class="text-sm font-normal text-neutral-500 md:text-lg" for="filter-category">Filter Category</label>
+        <select class="p-4 text-sm bg-neutral-50 md:text-base rounded-xl" name="filter-category" id="filter-category">
           <option value="" disabled selected>Select Category</option>
-          <option value="all" >All</option>
+          <option value="all">All</option>
           <option value="Salary">Salary</option>
           <option value="Housing">Housing</option>
           <option value="Transportation">Transportation</option>
@@ -87,15 +87,15 @@
         </select>
       </div>
 
-      <div class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-2" id="history-container">
+      <div class="flex flex-col gap-4 px-2 md:grid md:grid-cols-2 lg:grid-cols-3" id="history-container">
 
       </div>
     </section>
 
-    <section class="w-full bg-white rounded-xl p-4 flex gap-6 flex-col ring-shadow sm:p-6">
-      <h4 class="text-xl md:text-2xl font-bold">Graph</h4>
+    <section class="flex flex-col w-full gap-6 p-4 bg-white rounded-xl ring-shadow sm:p-6 ">
+      <h4 class="text-xl font-bold md:text-2xl">Graph</h4>
       <label for="graph-container">Refresh page to update graph!</label>
-      <canvas class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-2" id="graph-container">
+      <canvas class="flex flex-col gap-4 px-2 md:grid md:grid-cols-2 lg:grid-cols-3" id="graph-container">
 
       </canvas>
     </section>
@@ -113,24 +113,24 @@
   </footer>
 
   <section
-    class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16  flex justify-center items-center closed transition duration-500 overflow-y-scroll"
+    class="fixed z-20 flex items-center justify-center w-full h-full p-4 overflow-y-scroll transition duration-500 bg-gray-400/20 backdrop-blur-xl py-auto sm:px-10 md:px-16 closed"
     id="budget-form">
-    <form class="bg-white rounded-xl h-fit w-full max-w-2xl p-2 sm:p-4" id="budget-form">
-      <label for="budget-form" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
+    <form class="w-full max-w-2xl p-2 bg-white rounded-xl h-fit sm:p-4" id="budget-form">
+      <label for="budget-form" class="flex items-center justify-between px-4 py-2 text-lg font-bold md:text-xl">
         Edit Budget <button id="budget-close-button" class="font-extralight">&#x2715;</button>
       </label>
       <div class="flex flex-col gap-4 p-4">
         <div class="md:py-1">
-          <p class="text-neutral-500 font-normal text-sm md:text-lg">Budget</p>
+          <p class="text-sm font-normal text-neutral-500 md:text-lg">Budget</p>
           <h4 class="text-neutral-900 font-transaction" id="budget-form-label"></h4>
         </div>
         <div class="md:py-1">
-          <label for="budget-input" class="text-neutral-500 font-normal text-sm md:text-lg">New Budget<label />
-            <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1 " type="text" name="currency-field" id="budget-input"
+          <label for="budget-input" class="text-sm font-normal text-neutral-500 md:text-lg">New Budget<label />
+            <input class="w-full p-3 mt-1 bg-neutral-50 rounded-xl " type="text" name="currency-field" id="budget-input"
               required autocomplete="off" data-type="currency" placeholder="$1,000">
         </div>
         <button
-          class="bg-main w-full md:text-lg font-bold text-base py-3 flex justify-center items-center rounded-xl hover:ring-shadow"
+          class="flex items-center justify-center w-full py-3 text-base font-bold bg-main md:text-lg rounded-xl hover:ring-shadow"
           id="budget-submit-button" type="submit">
           Submit
         </button>
@@ -140,26 +140,26 @@
 
 
   <section
-    class="z-20 fixed h-full w-full bg-gray-400/20 backdrop-blur-xl py-auto p-4 sm:px-10 md:px-16 flex justify-center items-center closed transition duration-500 overflow-y-scroll"
+    class="fixed z-20 flex items-center justify-center w-full h-full p-4 overflow-y-scroll transition duration-500 bg-gray-400/20 backdrop-blur-xl py-auto sm:px-10 md:px-16 closed"
     id="record-form">
-    <form class="bg-white rounded-xl h-fit w-full max-w-2xl p-2 sm:p-4">
-      <label for="record-form" class="py-2 px-4 text-lg font-bold flex justify-between items-center md:text-xl">
+    <form class="w-full max-w-2xl p-2 bg-white rounded-xl h-fit sm:p-4">
+      <label for="record-form" class="flex items-center justify-between px-4 py-2 text-lg font-bold md:text-xl">
         New Record <button id="record-close-button" class="font-extralight">&#x2715;</button>
       </label>
-      <div class="flex gap-4 p-4 flex-wrap md:gap-6">
+      <div class="flex flex-wrap gap-4 p-4 md:gap-6">
 
         <div class="flex w-full bg-neutral-50 rounded-xl" name="income-expense-choice" id="income-expense-choice">
           <button
-            class="flex-1 flex justify-center items-center text-sm md:text-base font-normal rounded-xl hover:ring-1 ring-inset ring-main py-4 transition-colors"
+            class="flex items-center justify-center flex-1 py-4 text-sm font-normal transition-colors md:text-base rounded-xl hover:ring-1 ring-inset ring-main"
             id="income-choice">Income</button>
           <button
-            class="flex-1 flex justify-center items-center text-sm md:text-base font-normal rounded-xl hover:ring-1 ring-inset ring-main py-4 transition-colors"
+            class="flex items-center justify-center flex-1 py-4 text-sm font-normal transition-colors md:text-base rounded-xl hover:ring-1 ring-inset ring-main"
             id="expense-choice">Expense</button>
         </div>
 
-        <div class="flex md:flex-1 w-full flex-col gap-2 md:gap-4 md:w-1/2">
-          <label class="text-neutral-500 font-normal text-sm md:text-lg" for="order-category">Categories</label>
-          <select class="bg-neutral-50 text-sm md:text-base rounded-xl p-4" name="order-category" id="order-category">
+        <div class="flex flex-col w-full gap-2 md:flex-1 md:gap-4 md:w-1/2">
+          <label class="text-sm font-normal text-neutral-500 md:text-lg" for="order-category">Categories</label>
+          <select class="p-4 text-sm bg-neutral-50 md:text-base rounded-xl" name="order-category" id="order-category">
             <option value="" disabled selected>Select Category</option>
             <option value="Salary">Salary</option>
             <option value="Housing">Housing</option>
@@ -170,30 +170,25 @@
           </select>
         </div>
 
-        <div class="flex md:flex-1 w-full flex-col gap-2 md:gap-4 md:w-1/2">
-          <label class="text-neutral-500 font-normal text-sm md:text-lg" for="order-name">Transaction Name</label>
-          <input class="bg-neutral-50 text-sm md:text-base rounded-xl p-4" type="text" required id="order-name"
+        <div class="flex flex-col w-full gap-2 md:flex-1 md:gap-4 md:w-1/2">
+          <label class="text-sm font-normal text-neutral-500 md:text-lg" for="order-name">Transaction Name</label>
+          <input class="p-4 text-sm bg-neutral-50 md:text-base rounded-xl" type="text" required id="order-name"
             placeholder="Pay rent, car payment, etc">
         </div>
-        <div class="flex w-full flex-col gap-2 md:gap-4 text-neutral-500 font-normal text-sm md:text-lg">
+        <div class="flex flex-col w-full gap-2 text-sm font-normal md:gap-4 text-neutral-500 md:text-lg">
           <label for="order-description">Description</label>
-          <textarea 
-          class="bg-neutral-50 text-sm md:text-base rounded-xl p-4" 
-          type="text" 
-          name="order-description"
-          id="order-description" 
-          rows="4" 
-          cols="0"
-          placeholder="Additional Description for the transaction"></textarea>
+          <textarea class="p-4 text-sm bg-neutral-50 md:text-base rounded-xl" type="text" name="order-description"
+            id="order-description" rows="4" cols="0"
+            placeholder="Additional Description for the transaction"></textarea>
         </div>
 
-        <div class="md:py-1 w-full">
-          <label for="order-input" class="text-neutral-500 font-normal text-sm md:text-lg">Amount</label>
-          <input class="bg-neutral-50 p-3 w-full rounded-xl mt-1 " type="text" name="currency-field" id="order-input"
-              required autocomplete="off" data-type="currency" placeholder="$1,000">
+        <div class="w-full md:py-1">
+          <label for="order-input" class="text-sm font-normal text-neutral-500 md:text-lg">Amount</label>
+          <input class="w-full p-3 mt-1 bg-neutral-50 rounded-xl " type="text" name="currency-field" id="order-input"
+            required autocomplete="off" data-type="currency" placeholder="$1,000">
         </div>
         <button
-          class="bg-main w-full md:text-lg font-bold text-base py-3 flex justify-center items-center rounded-xl hover:ring-shadow"
+          class="flex items-center justify-center w-full py-3 text-base font-bold bg-main md:text-lg rounded-xl hover:ring-shadow"
           id="order-submit-button" type="submit">
           Submit
         </button>
